@@ -1,0 +1,4 @@
+rootProject.name = 'tutor'
+
+include 'tutor-app'
+include 'tutor-lib'
