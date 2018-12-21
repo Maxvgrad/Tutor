@@ -26,5 +26,5 @@ public class ExaminationAssessmentMistake<T extends BaseJsonEntity> {
     private Integer totalMistakes;
 
     @Column
-    private T mistakes;
+    private T submittingFormMistakes;
 }

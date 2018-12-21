@@ -64,7 +64,7 @@ create table if not exists examination_form (
     type varchar(255) not null,
     description varchar(4096),
     total_questions integer not null,
-    questions_key jsonb not null
+    submitting_form_keys jsonb not null
 );
 
 comment on table examination_form is 'Экзаменационная форма';
@@ -73,7 +73,7 @@ comment on column examination_form.creation_date is 'Дата создания �
 comment on column examination_form.type is 'Тип';
 comment on column examination_form.description is 'Описание';
 comment on column examination_form.total_questions is 'Суммарное число вопросов';
-comment on column examination_form.questions_key is 'Ключ к вопросам';
+comment on column examination_form.submitting_form_keys is 'Ключ к вопросам';
 
 create table if not exists examination_assessment (
     id bigserial primary key,
@@ -95,19 +95,19 @@ comment on column examination_assessment.mark is 'Оценка';
 create table if not exists examination_assessment_answer (
     examination_assessment_id bigint constraint examination_assessment_answer_examination_assessment_fk references examination_assessment (id),
     total_answers integer,
-    answers jsonb not null
+    submitting_form_answers jsonb not null
 );
 
 comment on table examination_assessment_answer is 'Ответы на экзаменационную форму';
 comment on column examination_assessment_answer.total_answers is 'Суммарное число ответов';
-comment on column examination_assessment_answer.answers is 'Ответы';
+comment on column examination_assessment_answer.submitting_form_answers is 'Ответы';
 
 create table if not exists examination_assessment_mistake (
     examination_assessment_id bigint constraint examination_assessment_mistake_examination_assessment_fk references examination_assessment (id),
     total_mistackes integer,
-    mistackes jsonb not null
+    submitting_form_mistackes jsonb not null
 );
 
 comment on table examination_assessment_mistake is 'Ошибки на экзаменационную форму';
 comment on column examination_assessment_mistake.total_mistackes is 'Суммарное число ощибок';
-comment on column examination_assessment_mistake.mistackes is 'Ошибки';
+comment on column examination_assessment_mistake.submitting_form_mistackes is 'Ошибки';

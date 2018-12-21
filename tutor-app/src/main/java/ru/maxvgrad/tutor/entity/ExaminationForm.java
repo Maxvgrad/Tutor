@@ -41,6 +41,6 @@ public class ExaminationForm<T extends BaseJsonEntity> {
     private Integer totalQuestions;
 
     @Column(nullable = false)
-    private T questionsKey;
+    private T submittingFormKeys;
 
 }

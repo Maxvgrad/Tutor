@@ -1,16 +1,19 @@
-package ru.maxvgrad.tutor.entity;
+package ru.maxvgrad.tutor.entity.forms;
 
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
+import ru.maxvgrad.tutor.entity.BaseJsonEntity;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 
-@Entity
+@Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class JsonEgeMathProfForm {
+public class EgeMathProfSubmittingForm extends BaseJsonEntity {
 
     @Column(name = "b1")
     private Double b1;

@@ -26,5 +26,5 @@ public class ExaminationAssessmentAnswer<T extends BaseJsonEntity> {
     private Integer totalAnswers;
 
     @Column
-    private T answers;
+    private T submittingFormAnswers;
 }
