@@ -11,5 +11,5 @@ import javax.persistence.MappedSuperclass;
       @TypeDef(name = "json", typeClass = JsonStringType.class),
       @TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)})
 @MappedSuperclass
-public class BaseEntity {
+public class BaseJsonEntity {
 }
