@@ -2,11 +2,11 @@ create table if not exists app_user
 (
   id              bigserial primary key,
   login           varchar(255) unique,
-  password        varchar(255),
-  email           varchar(255),
+  password        varchar(255) not null,
+  email           varchar(255) not null,
   full_name       varchar(255) not null,
-  phone           varchar(255),
-  status          varchar(255)
+  phone           varchar(255) not null,
+  status          varchar(255) not null
 );
 
 comment on table app_user
@@ -75,39 +75,39 @@ comment on column examination_form.description is 'Описание';
 comment on column examination_form.total_questions is 'Суммарное число вопросов';
 comment on column examination_form.questions_key is 'Ключ к вопросам';
 
-create table if not exists exam_assessment (
+create table if not exists examination_assessment (
     id bigserial primary key,
     creation_date timestamp not null default current_timestamp,
     submit_date timestamp,
     status varchar(255),
-    mark smallint,
-    app_user_id bigint not null constraint exam_assessment_app_user_fk references app_user (id),
-    examination_form_id bigint not null constraint exam_assessment_examination_form_fk references examination_form (id)
+    mark integer,
+    app_user_id bigint not null constraint examination_assessment_app_user_fk references app_user (id),
+    examination_form_id bigint not null constraint examination_assessment_examination_form_fk references examination_form (id)
 );
 
-comment on table exam_assessment is 'Экзаменационное испытание';
-comment on column exam_assessment.id is 'Первичный ключ';
-comment on column exam_assessment.creation_date is 'Дата создания объекта';
-comment on column exam_assessment.submit_date is 'Дата сдачи задания';
-comment on column exam_assessment.status is 'Статус';
-comment on column exam_assessment.mark is 'Оценка';
+comment on table examination_assessment is 'Экзаменационное испытание';
+comment on column examination_assessment.id is 'Первичный ключ';
+comment on column examination_assessment.creation_date is 'Дата создания объекта';
+comment on column examination_assessment.submit_date is 'Дата сдачи задания';
+comment on column examination_assessment.status is 'Статус';
+comment on column examination_assessment.mark is 'Оценка';
 
-create table if not exists examination_form_answer (
-    exam_assessment_id bigint constraint examination_form_answer_exam_assessment_fk references exam_assessment (id),
+create table if not exists examination_assessment_answer (
+    examination_assessment_id bigint constraint examination_assessment_answer_examination_assessment_fk references examination_assessment (id),
     total_answers integer,
     answers jsonb not null
 );
 
-comment on table examination_form_answer is 'Ответы на экзаменационную форму';
-comment on column examination_form_answer.total_answers is 'Суммарное число ответов';
-comment on column examination_form_answer.answers is 'Ответы';
+comment on table examination_assessment_answer is 'Ответы на экзаменационную форму';
+comment on column examination_assessment_answer.total_answers is 'Суммарное число ответов';
+comment on column examination_assessment_answer.answers is 'Ответы';
 
-create table if not exists examination_form_mistake (
-    exam_assessment_id bigint constraint examination_form_mistake_exam_assessment_fk references exam_assessment (id),
+create table if not exists examination_assessment_mistake (
+    examination_assessment_id bigint constraint examination_assessment_mistake_examination_assessment_fk references examination_assessment (id),
     total_mistackes integer,
     mistackes jsonb not null
 );
 
-comment on table examination_form_mistake is 'Ошибки на экзаменационную форму';
-comment on column examination_form_mistake.total_mistackes is 'Суммарное число ощибок';
-comment on column examination_form_mistake.mistackes is 'Ошибки';
+comment on table examination_assessment_mistake is 'Ошибки на экзаменационную форму';
+comment on column examination_assessment_mistake.total_mistackes is 'Суммарное число ощибок';
+comment on column examination_assessment_mistake.mistackes is 'Ошибки';
