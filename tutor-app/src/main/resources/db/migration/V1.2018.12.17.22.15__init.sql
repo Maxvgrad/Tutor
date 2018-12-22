@@ -95,19 +95,19 @@ comment on column examination_assessment.mark is 'Оценка';
 create table if not exists examination_assessment_answer (
     examination_assessment_id bigint constraint examination_assessment_answer_examination_assessment_fk references examination_assessment (id),
     total_answers integer,
-    submitting_form_answers jsonb not null
+    answers_submitting_form jsonb not null
 );
 
 comment on table examination_assessment_answer is 'Ответы на экзаменационную форму';
 comment on column examination_assessment_answer.total_answers is 'Суммарное число ответов';
-comment on column examination_assessment_answer.submitting_form_answers is 'Ответы';
+comment on column examination_assessment_answer.answers_submitting_form is 'Ответы';
 
 create table if not exists examination_assessment_mistake (
     examination_assessment_id bigint constraint examination_assessment_mistake_examination_assessment_fk references examination_assessment (id),
     total_mistackes integer,
-    submitting_form_mistackes jsonb not null
+    mistackes_submitting_form jsonb not null
 );
 
 comment on table examination_assessment_mistake is 'Ошибки на экзаменационную форму';
 comment on column examination_assessment_mistake.total_mistackes is 'Суммарное число ощибок';
-comment on column examination_assessment_mistake.submitting_form_mistackes is 'Ошибки';
+comment on column examination_assessment_mistake.mistackes_submitting_form is 'Ошибки';
