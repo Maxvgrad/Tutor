@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 import ru.maxvgrad.tutor.dto.enums.ExaminationFormType;
 
 import javax.persistence.Column;
@@ -21,7 +22,7 @@ import java.time.Instant;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ExaminationForm<T extends BaseJsonEntity> {
+public class ExaminationForm<T> extends BaseJsonEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,6 +41,7 @@ public class ExaminationForm<T extends BaseJsonEntity> {
     @Column(nullable = false)
     private Integer totalQuestions;
 
+    @Type(type = "jsonb")
     @Column(nullable = false)
     private T submittingFormKeys;
 

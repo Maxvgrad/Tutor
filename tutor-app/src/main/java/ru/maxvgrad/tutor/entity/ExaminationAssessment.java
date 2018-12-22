@@ -13,6 +13,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import java.time.Instant;
 
 @Entity
@@ -39,15 +41,15 @@ public class ExaminationAssessment {
     @Column
     private Integer mark;
 
-    @Column
+    @ManyToOne
     private AppUser user;
 
-    @Column(nullable = false)
+    @ManyToOne
     private ExaminationAssessmentAnswer answer;
 
-    @Column
+    @OneToOne
     private ExaminationAssessmentMistake mistake;
 
-    @Column(nullable = false)
+    @OneToOne
     private ExaminationForm examinationForm;
 }

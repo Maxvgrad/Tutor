@@ -24,3 +24,7 @@ logging:
     ru.maxvgrad.tutor: DEBUG
     org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
     org.springframework.security: DEBUG
+
+springfox:
+  documentation:
+    auto-startup: ${SPRING_FOX_AUTO_STARTUP:TRUE}

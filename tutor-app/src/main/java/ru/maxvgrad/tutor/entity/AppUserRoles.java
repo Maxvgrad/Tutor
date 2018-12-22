@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 @Data
@@ -29,7 +30,7 @@ public class AppUserRoles {
     @Column()
     private String description;
 
-    @Column()
+    @ManyToOne
     private AppUserRoles parent;
 
 }

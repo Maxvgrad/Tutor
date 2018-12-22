@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,7 +17,7 @@ import javax.persistence.Id;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ExaminationAssessmentMistake<T extends BaseJsonEntity> {
+public class ExaminationAssessmentMistake<T> extends BaseJsonEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +26,7 @@ public class ExaminationAssessmentMistake<T extends BaseJsonEntity> {
     @Column
     private Integer totalMistakes;
 
+    @Type(type = "jsonb")
     @Column
     private T submittingFormMistakes;
 }
