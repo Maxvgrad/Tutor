@@ -12,6 +12,6 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class MistakeSubmittingFormDto {
+public class MistakeFormDto {
     private List<String> mistakes = new ArrayList<>();
 }

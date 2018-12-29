@@ -33,16 +33,16 @@ public class ExaminationForm<T> extends BaseJsonEntity {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private ExaminationFormType type;
+    private ExaminationFormType examType;
 
     @Column
     private String description;
 
     @Column(nullable = false)
-    private Integer totalQuestions;
+    private Integer total;
 
     @Type(type = "jsonb")
     @Column(nullable = false)
-    private T submittingFormKeys;
+    private T questionKey;
 
 }

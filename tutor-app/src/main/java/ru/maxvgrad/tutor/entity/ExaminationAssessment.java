@@ -22,7 +22,7 @@ import java.time.Instant;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ExaminationAssessment {
+public class ExaminationAssessment<T> extends BaseJsonEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,17 +39,17 @@ public class ExaminationAssessment {
     private ExaminationAssesmentStatus status;
 
     @Column
-    private Integer mark;
+    private Double mark;
 
     @ManyToOne
     private AppUser user;
 
-    @ManyToOne
-    private ExaminationAssessmentAnswer answer;
+    @OneToOne(targetEntity = Answer.class)
+    private Answer<T> answer;
 
-    @OneToOne
-    private ExaminationAssessmentMistake mistake;
+    @OneToOne(targetEntity = Mistake.class)
+    private Mistake<T> mistake;
 
-    @OneToOne
-    private ExaminationForm examinationForm;
+    @ManyToOne(targetEntity = ExaminationForm.class)
+    private ExaminationForm<T> examinationForm;
 }
