@@ -18,6 +18,13 @@ spring:
       write-dates-as-timestamps: true
       write-date-timestamps-as-nanoseconds: false
     default-property-inclusion: non_null
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
 # Logging
 logging:
   level:
