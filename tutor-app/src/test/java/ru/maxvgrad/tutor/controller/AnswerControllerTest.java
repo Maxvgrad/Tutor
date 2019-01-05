@@ -18,8 +18,8 @@ abstract class AnswerControllerTest extends ControllerTest {
         ExaminationForm examinationForm = TestObject.buildExaminationForm(getSubmissionForm());
         getExaminationFormRepository().save(examinationForm);
 
-        getAnswerRepository().save(TestObject.buildEgeMathProfAnswer(getSubmissionForm(), examinationForm));
-        getAnswerRepository().save(TestObject.buildEgeMathProfAnswer(getSubmissionForm(), examinationForm));
+        getAnswerRepository().save(TestObject.buildAnswer(getSubmissionForm(), examinationForm));
+        getAnswerRepository().save(TestObject.buildAnswer(getSubmissionForm(), examinationForm));
 
         assertNotNull(getAnswerRepository().getById(1L));
 
@@ -30,8 +30,9 @@ abstract class AnswerControllerTest extends ControllerTest {
     void save() {
     }
 
-//    @Test
+    @Test
     void get() {
+
     }
 
 //    @Test
