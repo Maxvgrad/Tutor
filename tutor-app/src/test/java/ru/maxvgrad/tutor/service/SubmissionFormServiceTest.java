@@ -2,19 +2,19 @@ package ru.maxvgrad.tutor.service;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import ru.maxvgrad.tutor.dto.SubmissionForm;
+import ru.maxvgrad.tutor.dto.SubmissionFormDto;
 import ru.maxvgrad.tutor.repository.AnswerRepository;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @Disabled
-abstract class AnswerServiceTest<T extends SubmissionForm> {
+abstract class SubmissionFormServiceTest<T> {
 
     static final Long VALID_ANSWER_ID = 1L;
     static final Long INVALID_ANSWER_ID = -1L;
 
-    private T form;
+    private SubmissionFormDto<T> submissionForm;
 
     @Test
     void listAll() {
@@ -31,7 +31,7 @@ abstract class AnswerServiceTest<T extends SubmissionForm> {
 
     @Test
     void getSuccessTest() {
-        form = getAnswerService().get(VALID_ANSWER_ID).orElseThrow(IllegalArgumentException::new);
+        submissionForm = getAnswerService().get(VALID_ANSWER_ID).orElseThrow(IllegalArgumentException::new);
         thenAssert();
     }
 
@@ -44,15 +44,15 @@ abstract class AnswerServiceTest<T extends SubmissionForm> {
     void evaluate() {
     }
 
-    abstract AnswerService<T> getAnswerService();
+    abstract SubmissionFormService<T> getAnswerService();
 
     abstract T buildValidForm();
 
     abstract AnswerRepository getAnswerRepository();
 
     void thenAssert() {
-        assertNotNull(form);
-        assertNotNull(form.getId());
-        assertNotNull(form.getExaminationFormId());
+        assertNotNull(submissionForm);
+        assertNotNull(submissionForm.getId());
+        assertNotNull(submissionForm.getExaminationFormId());
     }
 }

@@ -1,11 +1,11 @@
 package ru.maxvgrad.tutor.utils;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.experimental.UtilityClass;
-import ru.maxvgrad.tutor.dto.EgeMathProfFormDto;
+import ru.maxvgrad.tutor.dto.SubmissionFormDto;
 import ru.maxvgrad.tutor.dto.enums.ExaminationFormType;
 import ru.maxvgrad.tutor.entity.Answer;
 import ru.maxvgrad.tutor.entity.ExaminationForm;
+import ru.maxvgrad.tutor.form.EgeMathProfForm;
 
 import java.time.Instant;
 
@@ -14,10 +14,8 @@ public class TestObject {
 
     private static final String EMPTY_JSON = "{}";
 
-    private ObjectMapper objectMapper = new ObjectMapper();
-
-    public EgeMathProfFormDto buildEgeMathProfForm() {
-        return EgeMathProfFormDto.builder().b1(1.2).b2(2.2).b3(3.2).b4(4.2).b5(5.2).b6(6.2).b7(7.2)
+    public EgeMathProfForm buildEgeMathProfForm() {
+        return EgeMathProfForm.builder().b1(1.2).b2(2.2).b3(3.2).b4(4.2).b5(5.2).b6(6.2).b7(7.2)
                                  .b8(8.2)
                                  .b9(9.2)
                                  .b10(10.2)
@@ -58,5 +56,13 @@ public class TestObject {
                               .total(5)
                               .questionKey(questionKeyJson)
                               .build();
+    }
+
+    public <T> SubmissionFormDto<T> buildSubmissionForm(T form) {
+        return SubmissionFormDto.<T>builder()
+                .id(1L)
+                .form(form)
+                .examinationFormId(1L)
+                .build();
     }
 }

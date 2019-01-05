@@ -2,8 +2,8 @@ package ru.maxvgrad.tutor.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.maxvgrad.tutor.dto.EgeMathProfFormDto;
-import ru.maxvgrad.tutor.entity.Answer;
+import ru.maxvgrad.tutor.dto.SubmissionFormDto;
+import ru.maxvgrad.tutor.form.EgeMathProfForm;
 import ru.maxvgrad.tutor.repository.AnswerRepository;
 
 import java.util.List;
@@ -11,18 +11,17 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class EgeMathProfAnswerService implements AnswerService<EgeMathProfFormDto> {
+public class EgeMathProfFormService implements SubmissionFormService<EgeMathProfForm> {
 
     private final AnswerRepository answerRepository;
 
     @Override
-    public List<EgeMathProfFormDto> listAll() {
-
+    public List<SubmissionFormDto<EgeMathProfForm>> listAll() {
         return null;
     }
 
     @Override
-    public EgeMathProfFormDto save(EgeMathProfFormDto submissionForm) {
+    public SubmissionFormDto<EgeMathProfForm> save(SubmissionFormDto<EgeMathProfForm> submissionForm) {
         return null;
     }
 
@@ -32,12 +31,12 @@ public class EgeMathProfAnswerService implements AnswerService<EgeMathProfFormDt
     }
 
     @Override
-    public Optional<EgeMathProfFormDto> get(Long id) {
+    public Optional<SubmissionFormDto<EgeMathProfForm>> get(Long id) {
         return Optional.empty();
     }
 
     @Override
-    public Answer evaluate(EgeMathProfFormDto submissionForm) {
+    public SubmissionFormDto<EgeMathProfForm> evaluate(SubmissionFormDto<EgeMathProfForm> submissionForm) {
         return null;
     }
 }

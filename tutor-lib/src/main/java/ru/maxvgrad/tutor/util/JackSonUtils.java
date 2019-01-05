@@ -6,11 +6,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 
-public final class JacksonUtil {
+public class JackSonUtils {
 
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
-
-    private JacksonUtil() {}
 
     public static <T> T fromString(String string, Class<T> clazz) {
         try {

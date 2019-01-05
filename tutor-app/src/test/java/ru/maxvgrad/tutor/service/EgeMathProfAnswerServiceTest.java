@@ -2,17 +2,17 @@ package ru.maxvgrad.tutor.service;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.mockito.Mockito;
-import ru.maxvgrad.tutor.dto.EgeMathProfFormDto;
+import ru.maxvgrad.tutor.form.EgeMathProfForm;
 import ru.maxvgrad.tutor.repository.AnswerRepository;
 import ru.maxvgrad.tutor.utils.TestObject;
 
-class EgeMathProfAnswerServiceTest extends AnswerServiceTest<EgeMathProfFormDto> {
+class EgeMathProfAnswerServiceTest extends SubmissionFormServiceTest<EgeMathProfForm> {
 
     private static AnswerRepository answerRepository;
 
-    private static AnswerService<EgeMathProfFormDto> answerService;
+    private static SubmissionFormService<EgeMathProfForm> answerService;
 
-    private EgeMathProfFormDto form;
+    private EgeMathProfForm form;
 
     @BeforeAll
     static void init() {
@@ -23,17 +23,17 @@ class EgeMathProfAnswerServiceTest extends AnswerServiceTest<EgeMathProfFormDto>
         answerRepository = Mockito.mock(AnswerRepository.class);
         Mockito.when(answerRepository.getById(VALID_ANSWER_ID)).thenReturn(TestObject.buildAnswer());
         Mockito.when(answerRepository.getById(INVALID_ANSWER_ID)).thenReturn(null);
-        answerService = new EgeMathProfAnswerService(answerRepository);
+        answerService = new EgeMathProfFormService(answerRepository);
     }
 
 
     @Override
-    AnswerService<EgeMathProfFormDto> getAnswerService() {
+    SubmissionFormService<EgeMathProfForm> getAnswerService() {
         return answerService;
     }
 
     @Override
-    EgeMathProfFormDto buildValidForm() {
+    EgeMathProfForm buildValidForm() {
         return form;
     }
 

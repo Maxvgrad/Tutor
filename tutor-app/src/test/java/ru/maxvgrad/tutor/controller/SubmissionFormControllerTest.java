@@ -1,8 +1,8 @@
 package ru.maxvgrad.tutor.controller;
 
 import org.junit.jupiter.api.Test;
-import ru.maxvgrad.tutor.dto.EgeMathProfFormDto;
 import ru.maxvgrad.tutor.entity.ExaminationForm;
+import ru.maxvgrad.tutor.form.EgeMathProfForm;
 import ru.maxvgrad.tutor.repository.AnswerRepository;
 import ru.maxvgrad.tutor.repository.ExaminationFormRepository;
 import ru.maxvgrad.tutor.utils.ControllerTest;
@@ -10,7 +10,7 @@ import ru.maxvgrad.tutor.utils.TestObject;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-abstract class AnswerControllerTest extends ControllerTest {
+abstract class SubmissionFormControllerTest extends ControllerTest {
 
     @Test
     void listAll() {
@@ -49,5 +49,5 @@ abstract class AnswerControllerTest extends ControllerTest {
 
     abstract ExaminationFormRepository getExaminationFormRepository();
 
-    abstract EgeMathProfFormDto getSubmissionForm();
+    abstract EgeMathProfForm getSubmissionForm();
 }

@@ -8,7 +8,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import ru.maxvgrad.tutor.TutorApplication;
-import ru.maxvgrad.tutor.dto.EgeMathProfFormDto;
+import ru.maxvgrad.tutor.form.EgeMathProfForm;
 import ru.maxvgrad.tutor.repository.AnswerRepository;
 import ru.maxvgrad.tutor.repository.ExaminationFormRepository;
 import ru.maxvgrad.tutor.utils.TestObject;
@@ -18,7 +18,7 @@ import ru.maxvgrad.tutor.utils.TestObject;
 @AutoConfigureEmbeddedDatabase
 @FlywayTest
 @AutoConfigureMockMvc
-class EgeMathProfAnswerControllerTest extends AnswerControllerTest {
+class EgeMathProfFormControllerTest extends SubmissionFormControllerTest {
 
     private static String baseUrl = TutorApplication.MODULE_BASE_URL + "/examination/assessment/ege/math/prof";
 
@@ -37,7 +37,7 @@ class EgeMathProfAnswerControllerTest extends AnswerControllerTest {
     }
 
     @Override
-    EgeMathProfFormDto getSubmissionForm() {
+    EgeMathProfForm getSubmissionForm() {
         return TestObject.buildEgeMathProfForm();
     }
 
