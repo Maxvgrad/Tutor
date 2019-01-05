@@ -1,21 +1,22 @@
 package ru.maxvgrad.tutor.service;
 
 import org.springframework.stereotype.Service;
+import ru.maxvgrad.tutor.dto.SubmissionForm;
 import ru.maxvgrad.tutor.entity.Answer;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public interface AnswerService<T> {
+public interface AnswerService<T extends SubmissionForm> {
 
-    List<Answer> listAll();
+    List<T> listAll();
 
-    Answer save(T submittingAnswersForm);
+    T save(T submittingAnswersForm);
 
     void remove(Long id);
 
-    Optional<Answer> get(Long id);
+    Optional<T> get(Long id);
 
     Answer evaluate(T submittingAnswersForm);
 

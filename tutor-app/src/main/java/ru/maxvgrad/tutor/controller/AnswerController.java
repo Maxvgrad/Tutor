@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import ru.maxvgrad.tutor.dto.SubmissionForm;
 import ru.maxvgrad.tutor.entity.Answer;
 import ru.maxvgrad.tutor.service.AnswerService;
 
@@ -18,7 +19,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Slf4j
-public abstract class AnswerController<T> {
+public abstract class AnswerController<T extends SubmissionForm> {
 
     private final AnswerService<T> answerService;
 
@@ -27,19 +28,19 @@ public abstract class AnswerController<T> {
     }
 
     @GetMapping
-    public @ResponseBody List<Answer> listAll() {
+    public @ResponseBody List<T> listAll() {
         log.debug("#listAll:");
         return answerService.listAll();
     }
 
     @PutMapping(consumes = {MediaType.APPLICATION_JSON_VALUE})
-    public @ResponseBody Answer save(@PathVariable T submittingForm) {
+    public @ResponseBody T save(@PathVariable T submittingForm) {
         log.debug("#save: submittingForm({})", submittingForm.toString());
         return answerService.save(submittingForm);
     }
 
     @GetMapping("/{id}")
-    public @ResponseBody Optional<Answer> get(@PathVariable Long id) {
+    public @ResponseBody Optional<T> get(@PathVariable Long id) {
         log.debug("#get: id: {}", id);
         return answerService.get(id);
     }
