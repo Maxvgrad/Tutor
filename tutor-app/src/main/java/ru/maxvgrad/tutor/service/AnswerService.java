@@ -12,13 +12,13 @@ public interface AnswerService<T extends SubmissionForm> {
 
     List<T> listAll();
 
-    T save(T submittingAnswersForm);
+    T save(T submissionForm);
 
     void remove(Long id);
 
     Optional<T> get(Long id);
 
-    Answer evaluate(T submittingAnswersForm);
+    Answer evaluate(T submissionForm);
 
 
 }
