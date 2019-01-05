@@ -9,9 +9,9 @@ import ru.maxvgrad.tutor.service.EgeMathProfAnswerService;
 
 @RestController
 @RequestMapping(TutorApplication.MODULE_BASE_URL + "/examination/assessment/ege/math/prof")
-public class EgeMathPorfAnswerController extends AnswerController<EgeMathProfFormDto> {
+public class EgeMathProfAnswerController extends AnswerController<EgeMathProfFormDto> {
 
-    public EgeMathPorfAnswerController(EgeMathProfAnswerService answerService) {
+    public EgeMathProfAnswerController(EgeMathProfAnswerService answerService) {
         super(answerService);
     }
 }

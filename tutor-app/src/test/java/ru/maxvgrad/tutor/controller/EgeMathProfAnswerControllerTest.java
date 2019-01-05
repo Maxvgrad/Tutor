@@ -18,7 +18,7 @@ import ru.maxvgrad.tutor.utils.TestObject;
 @AutoConfigureEmbeddedDatabase
 @FlywayTest
 @AutoConfigureMockMvc
-class EgeMathPorfAnswerControllerTest extends AnswerControllerTest {
+class EgeMathProfAnswerControllerTest extends AnswerControllerTest {
 
     private static String baseUrl = TutorApplication.MODULE_BASE_URL + "/examination/assessment/ege/math/prof";
 
