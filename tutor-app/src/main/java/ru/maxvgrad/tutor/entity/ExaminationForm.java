@@ -22,7 +22,7 @@ import java.time.Instant;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ExaminationForm<T> extends BaseJsonEntity {
+public class ExaminationForm extends BaseJsonEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,7 +42,7 @@ public class ExaminationForm<T> extends BaseJsonEntity {
     private Integer total;
 
     @Type(type = "jsonb")
-    @Column(nullable = false)
-    private T questionKey;
+    @Column(columnDefinition = "jsonb", nullable = false)
+    private String questionKey;
 
 }

@@ -4,5 +4,5 @@ import org.springframework.stereotype.Repository;
 import ru.maxvgrad.tutor.entity.ExaminationForm;
 
 @Repository
-public interface ExaminationFormRepository<T> extends EntityBaseRepository<ExaminationForm<T>> {
+public interface ExaminationFormRepository extends EntityBaseRepository<ExaminationForm> {
 }

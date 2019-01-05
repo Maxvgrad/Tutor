@@ -9,15 +9,15 @@ import java.util.Optional;
 @Service
 public interface AnswerService<T> {
 
-    List<Answer<T>> listAll();
+    List<Answer> listAll();
 
-    Answer<T> save(T submittingAnswersForm);
+    Answer save(T submittingAnswersForm);
 
     void remove(Long id);
 
-    Optional<Answer<T>> get(Long id);
+    Optional<Answer> get(Long id);
 
-    Answer<T> evaluate(T submittingAnswersForm);
+    Answer evaluate(T submittingAnswersForm);
 
 
 }

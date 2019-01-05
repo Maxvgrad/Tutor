@@ -4,5 +4,5 @@ import org.springframework.stereotype.Repository;
 import ru.maxvgrad.tutor.entity.Answer;
 
 @Repository
-public interface AnswerRepository<T> extends EntityBaseRepository<Answer<T>> {
+public interface AnswerRepository extends EntityBaseRepository<Answer> {
 }

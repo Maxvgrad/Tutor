@@ -22,7 +22,7 @@ import java.time.Instant;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ExaminationAssessment<T> extends BaseJsonEntity {
+public class ExaminationAssessment extends BaseJsonEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,11 +45,11 @@ public class ExaminationAssessment<T> extends BaseJsonEntity {
     private AppUser user;
 
     @OneToOne(targetEntity = Answer.class)
-    private Answer<T> answer;
+    private Answer answer;
 
     @OneToOne(targetEntity = Mistake.class)
-    private Mistake<T> mistake;
+    private Mistake mistake;
 
     @ManyToOne(targetEntity = ExaminationForm.class)
-    private ExaminationForm<T> examinationForm;
+    private ExaminationForm examinationForm;
 }

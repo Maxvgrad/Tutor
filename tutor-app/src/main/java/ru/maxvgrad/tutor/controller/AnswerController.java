@@ -27,25 +27,25 @@ public abstract class AnswerController<T> {
     }
 
     @GetMapping
-    public @ResponseBody List<Answer<T>> listAll() {
+    public @ResponseBody List<Answer> listAll() {
         log.debug("#listAll:");
         return answerService.listAll();
     }
 
     @PutMapping(consumes = {MediaType.APPLICATION_JSON_VALUE})
-    public @ResponseBody Answer<T> save(@PathVariable T submittingForm) {
+    public @ResponseBody Answer save(@PathVariable T submittingForm) {
         log.debug("#save: submittingForm({})", submittingForm.toString());
         return answerService.save(submittingForm);
     }
 
     @GetMapping("/{id}")
-    public @ResponseBody Optional<Answer<T>> get(@PathVariable Long id) {
+    public @ResponseBody Optional<Answer> get(@PathVariable Long id) {
         log.debug("#get: id: {}", id);
         return answerService.get(id);
     }
 
     @PostMapping(value = "/{id}", consumes = { MediaType.APPLICATION_JSON_VALUE })
-    public @ResponseBody Answer<T> evaluate(@RequestBody T submittingForm) {
+    public @ResponseBody Answer evaluate(@RequestBody T submittingForm) {
         log.debug("#evaluate: submittingForm({})", submittingForm.toString());
         return answerService.evaluate(submittingForm);
     }

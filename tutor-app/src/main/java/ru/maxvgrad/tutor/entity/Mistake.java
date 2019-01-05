@@ -19,7 +19,7 @@ import javax.persistence.OneToOne;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Mistake<T> extends BaseJsonEntity {
+public class Mistake extends BaseJsonEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,9 +29,9 @@ public class Mistake<T> extends BaseJsonEntity {
     private Integer total;
 
     @OneToOne(targetEntity = Answer.class)
-    private Answer<T> answer;
+    private Answer answer;
 
     @Type(type = "jsonb")
-    @Column
+    @Column(columnDefinition = "jsonb")
     private MistakeFormDto content;
 }

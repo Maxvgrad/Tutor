@@ -12,13 +12,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+@Table(name = "answer")
 @Entity
-@Data
 @Builder
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
-public class Answer<T> extends BaseJsonEntity {
+@AllArgsConstructor
+public class Answer extends BaseJsonEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,9 +30,9 @@ public class Answer<T> extends BaseJsonEntity {
     private Integer total;
 
     @ManyToOne(targetEntity = ExaminationForm.class)
-    private ExaminationForm<T> examinationForm;
+    private ExaminationForm examinationForm;
 
     @Type(type = "jsonb")
-    @Column
-    private T submitForm;
+    @Column(columnDefinition = "jsonb")
+    private String submitForm;
 }
