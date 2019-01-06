@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import ru.maxvgrad.tutor.dto.SubmissionFormDto;
 import ru.maxvgrad.tutor.entity.Answer;
 
+import static junit.framework.TestCase.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -22,6 +23,12 @@ abstract class BaseAnswerSubmissionFormJsonMapperTest<T> {
     }
 
     @Test
+    void fromEntityNull() {
+        SubmissionFormDto<T> submissionForm = getMapper().fromEntity(null);
+        assertNull(submissionForm);
+    }
+
+    @Test
     void fromDto() {
         SubmissionFormDto<T> submissionForm = getSubmissionForm();
         Answer answer = getMapper().fromDto(getSubmissionForm());
@@ -34,11 +41,17 @@ abstract class BaseAnswerSubmissionFormJsonMapperTest<T> {
     }
 
     @Test
+    void fromDtoNull() {
+        Answer answer = getMapper().fromDto(null);
+        assertNull(answer);
+    }
+
+    @Test
     void update() {
         assertThrows(UnsupportedOperationException.class, () -> getMapper().update(getAnswer(), getSubmissionForm()));
     }
 
-    abstract Mapper<Answer, SubmissionFormDto<T>> getMapper();
+    abstract BaseAnswerSubmissionFormJsonMapper<T> getMapper();
 
     abstract Answer getAnswer();
 
