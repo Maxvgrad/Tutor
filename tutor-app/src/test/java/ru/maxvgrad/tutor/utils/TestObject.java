@@ -35,6 +35,7 @@ public class TestObject {
 
     public Answer buildAnswer(String submitFormJson, ExaminationForm examinationForm) {
         return Answer.builder()
+                     .id(1L)
                      .submitForm(submitFormJson)
                      .examinationForm(examinationForm)
                      .total(4).build();
@@ -51,6 +52,7 @@ public class TestObject {
 
     public ExaminationForm buildExaminationForm(String questionKeyJson) {
         return ExaminationForm.builder()
+                              .id(1L)
                               .creationDate(Instant.now())
                               .examType(ExaminationFormType.EGE_MATH_PROFESSIONAL)
                               .total(5)
