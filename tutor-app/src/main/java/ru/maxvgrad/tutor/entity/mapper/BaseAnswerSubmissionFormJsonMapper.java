@@ -2,11 +2,13 @@ package ru.maxvgrad.tutor.entity.mapper;
 
 import com.vladmihalcea.hibernate.type.json.internal.JacksonUtil;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import ru.maxvgrad.tutor.dto.SubmissionFormDto;
 import ru.maxvgrad.tutor.entity.Answer;
 import ru.maxvgrad.tutor.entity.ExaminationForm;
 
-import java.util.Arrays;
+import java.lang.reflect.Field;
+import java.util.Objects;
 
 @RequiredArgsConstructor
 public abstract class BaseAnswerSubmissionFormJsonMapper<T> implements Mapper<Answer, SubmissionFormDto<T>> {
@@ -44,13 +46,20 @@ public abstract class BaseAnswerSubmissionFormJsonMapper<T> implements Mapper<An
     }
 
     int countNotNullQuestions(T form) {
-        return (int) Arrays.stream(getFormClass().getDeclaredFields()).filter(field -> {
+        Field[] fields = getFormClass().getDeclaredFields();
+
+        int count = 0;
+
+        for (Field field : fields) {
             try {
                 field.setAccessible(true);
-                return field.get(form) != null;
+                if (Objects.nonNull(field.get(form))) {
+                    count++;
+                }
             } catch (IllegalAccessException ex) {
-                throw new IllegalArgumentException(ex);
+                ExceptionUtils.rethrow(ex);
             }
-        }).count();
+        }
+        return count;
     }
 }

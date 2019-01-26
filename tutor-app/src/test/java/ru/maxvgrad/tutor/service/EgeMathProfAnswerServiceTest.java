@@ -1,12 +1,14 @@
 package ru.maxvgrad.tutor.service;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mockito;
 import ru.maxvgrad.tutor.entity.mapper.AnswerEgeMathProfMapper;
 import ru.maxvgrad.tutor.entity.mapper.BaseAnswerSubmissionFormJsonMapper;
 import ru.maxvgrad.tutor.form.EgeMathProfForm;
 import ru.maxvgrad.tutor.repository.AnswerRepository;
 import ru.maxvgrad.tutor.utils.TestObject;
+
 
 class EgeMathProfAnswerServiceTest extends SubmissionFormServiceTest<EgeMathProfForm> {
 
@@ -19,15 +21,21 @@ class EgeMathProfAnswerServiceTest extends SubmissionFormServiceTest<EgeMathProf
     private EgeMathProfForm form;
 
     @BeforeAll
-    static void init() {
-        mockAll();
+    static void initClass() {
+        answerRepository = mockAnswerRepository();
+        answerService = new EgeMathProfFormService(answerRepository, mapper);
     }
 
-    private static void mockAll() {
+    @BeforeEach
+    void initInstant() {
+        form = TestObject.buildEgeMathProfForm();
+    }
+
+    private static AnswerRepository mockAnswerRepository() {
         answerRepository = Mockito.mock(AnswerRepository.class);
         Mockito.when(answerRepository.getById(VALID_ANSWER_ID)).thenReturn(TestObject.buildAnswer());
         Mockito.when(answerRepository.getById(INVALID_ANSWER_ID)).thenReturn(null);
-        answerService = new EgeMathProfFormService(answerRepository, mapper);
+        return answerRepository;
     }
 
 

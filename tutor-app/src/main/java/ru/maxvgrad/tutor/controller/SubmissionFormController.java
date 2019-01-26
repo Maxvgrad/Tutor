@@ -33,7 +33,7 @@ public abstract class SubmissionFormController<T> {
     }
 
     @PutMapping(consumes = {MediaType.APPLICATION_JSON_VALUE})
-    public @ResponseBody SubmissionFormDto<T> save(@PathVariable SubmissionFormDto<T> submittingForm) {
+    public @ResponseBody SubmissionFormDto<T> save(@RequestBody SubmissionFormDto<T> submittingForm) {
         log.debug("#save: submittingForm({})", submittingForm.toString());
         return answerService.save(submittingForm);
     }
