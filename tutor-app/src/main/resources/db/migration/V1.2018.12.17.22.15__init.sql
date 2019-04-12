@@ -23,14 +23,12 @@ create table if not exists user_role
   id          bigserial primary key,
   name        varchar(255) not null,
   description varchar(255),
-  parent_id   bigint
 );
 
 COMMENT ON TABLE user_role IS 'Пользовательские роли. Пример: администратор, директор, сотрудник';
 COMMENT ON COLUMN user_role.id IS 'Первичный ключ';
 COMMENT ON COLUMN user_role.name IS 'Наименование роли';
 COMMENT ON COLUMN user_role.description IS 'Краткое описание роли';
-COMMENT ON COLUMN user_role.parent_id IS 'Корневая роль';
 
 
 create table if not exists app_user_roles
