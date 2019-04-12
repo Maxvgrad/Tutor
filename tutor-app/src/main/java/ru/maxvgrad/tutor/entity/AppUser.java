@@ -13,6 +13,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
@@ -39,6 +42,11 @@ public class AppUser {
 
     @Column(nullable = false)
     private String phone;
+
+    @Column
+    @OneToMany
+    @Builder.Default
+    private Set<UserRole> userRole = new HashSet<>();
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)

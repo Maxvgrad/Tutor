@@ -6,4 +6,6 @@ import ru.maxvgrad.tutor.entity.AppUser;
 @Repository
 public interface AppUserRepository extends EntityBaseRepository<AppUser> {
 
+    AppUser getAppUserByLogin(String login);
+
 }
