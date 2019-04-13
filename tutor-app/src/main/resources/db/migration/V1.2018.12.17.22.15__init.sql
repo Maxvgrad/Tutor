@@ -22,7 +22,10 @@ create table if not exists user_role
 (
   id          bigserial primary key,
   name        varchar(255) not null,
-  description varchar(255),
+  description varchar
+(
+  255
+)
 );
 
 COMMENT ON TABLE user_role IS 'Пользовательские роли. Пример: администратор, директор, сотрудник';

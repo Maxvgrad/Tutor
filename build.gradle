@@ -19,6 +19,7 @@ subprojects {
     dependencies {
         compile ('com.fasterxml.jackson.core:jackson-core:2.9.7')
         compile ('com.fasterxml.jackson.core:jackson-databind:2.9.7')
+        compile group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
         compileOnly ('org.projectlombok:lombok')
 
         testCompile "org.junit.jupiter:junit-jupiter-api"
