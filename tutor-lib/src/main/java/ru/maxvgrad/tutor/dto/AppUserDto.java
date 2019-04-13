@@ -3,6 +3,7 @@ package ru.maxvgrad.tutor.dto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import ru.maxvgrad.tutor.dto.enums.AppUserStatus;
 import ru.maxvgrad.tutor.validation.PasswordMatches;
 import ru.maxvgrad.tutor.validation.ValidEmail;
 
@@ -14,18 +15,34 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 public class AppUserDto {
 
-    @NotBlank
-    private String firstName;
+    /**
+     * Идентификатор
+     */
+    private Long id;
 
+    /**
+     * ФИО
+     */
     @NotBlank
-    private String lastName;
+    private String fullName;
+
+    private String login;
 
     @NotBlank
     private String password;
+
     private String matchingPassword;
 
     @ValidEmail
     @NotBlank
     private String email;
+
+    @NotBlank
+    private String phone;
+
+    /**
+     * Статус пользователя
+     */
+    private AppUserStatus status;
 
 }

@@ -6,7 +6,7 @@ import ru.maxvgrad.tutor.form.EgeMathProfForm;
 import ru.maxvgrad.tutor.repository.AnswerRepository;
 import ru.maxvgrad.tutor.repository.ExaminationFormRepository;
 import ru.maxvgrad.tutor.utils.ControllerTest;
-import ru.maxvgrad.tutor.utils.TestObject;
+import ru.maxvgrad.tutor.utils.TestEntity;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -15,11 +15,11 @@ abstract class SubmissionFormControllerTest extends ControllerTest {
     @Test
     void listAll() {
 
-        ExaminationForm examinationForm = TestObject.buildExaminationForm(getSubmissionForm());
+        ExaminationForm examinationForm = TestEntity.buildExaminationForm(getSubmissionForm());
         getExaminationFormRepository().save(examinationForm);
 
-        getAnswerRepository().save(TestObject.buildAnswer(getSubmissionForm(), examinationForm));
-        getAnswerRepository().save(TestObject.buildAnswer(getSubmissionForm(), examinationForm));
+        getAnswerRepository().save(TestEntity.buildAnswer(getSubmissionForm(), examinationForm));
+        getAnswerRepository().save(TestEntity.buildAnswer(getSubmissionForm(), examinationForm));
 
         assertNotNull(getAnswerRepository().getById(1L));
 

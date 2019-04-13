@@ -11,7 +11,7 @@ import ru.maxvgrad.tutor.TutorApplication;
 import ru.maxvgrad.tutor.form.EgeMathProfForm;
 import ru.maxvgrad.tutor.repository.AnswerRepository;
 import ru.maxvgrad.tutor.repository.ExaminationFormRepository;
-import ru.maxvgrad.tutor.utils.TestObject;
+import ru.maxvgrad.tutor.utils.TestEntity;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = TutorApplication.class)
@@ -38,7 +38,7 @@ class EgeMathProfFormControllerTest extends SubmissionFormControllerTest {
 
     @Override
     EgeMathProfForm getSubmissionForm() {
-        return TestObject.buildEgeMathProfForm();
+        return TestEntity.buildEgeMathProfForm();
     }
 
     @Override

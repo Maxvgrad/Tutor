@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import ru.maxvgrad.tutor.dto.SubmissionFormDto;
 import ru.maxvgrad.tutor.entity.Answer;
 import ru.maxvgrad.tutor.entity.ExaminationForm;
-import ru.maxvgrad.tutor.entity.mapper.Mapper;
 import ru.maxvgrad.tutor.form.EgeMathProfForm;
 import ru.maxvgrad.tutor.repository.AnswerRepository;
 import ru.maxvgrad.tutor.repository.ExaminationFormRepository;
@@ -20,8 +19,6 @@ public class EgeMathProfFormService implements SubmissionFormService<EgeMathProf
     private final AnswerRepository answerRepository;
     private final ExaminationFormRepository examinationFormRepository;
 
-    private final Mapper<Answer, SubmissionFormDto<EgeMathProfForm>> mapper;
-
     @Override
     public List<SubmissionFormDto<EgeMathProfForm>> listAll() {
         return null;
@@ -30,7 +27,7 @@ public class EgeMathProfFormService implements SubmissionFormService<EgeMathProf
     @Override
     public SubmissionFormDto<EgeMathProfForm> save(SubmissionFormDto<EgeMathProfForm> submissionForm) {
         ExaminationForm examinationForm = examinationFormRepository.getById(1L);
-        Answer answer = mapper.fromDto(submissionForm);
+        Answer answer = null;//mapper.fromDto(submissionForm); //TODO
         answer.setExaminationForm(examinationForm);
         answerRepository.save(answer);
         return submissionForm;
@@ -44,7 +41,7 @@ public class EgeMathProfFormService implements SubmissionFormService<EgeMathProf
     @Override
     public Optional<SubmissionFormDto<EgeMathProfForm>> get(Long id) {
         Answer answer = answerRepository.getById(id);
-        return Optional.ofNullable(mapper.fromEntity(answer));
+        return Optional.empty(); //TODO
     }
 
     @Override

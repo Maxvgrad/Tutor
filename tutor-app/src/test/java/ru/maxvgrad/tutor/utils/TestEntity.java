@@ -1,16 +1,17 @@
 package ru.maxvgrad.tutor.utils;
 
 import lombok.experimental.UtilityClass;
-import ru.maxvgrad.tutor.dto.SubmissionFormDto;
+import ru.maxvgrad.tutor.dto.enums.AppUserStatus;
 import ru.maxvgrad.tutor.dto.enums.ExaminationFormType;
 import ru.maxvgrad.tutor.entity.Answer;
+import ru.maxvgrad.tutor.entity.AppUser;
 import ru.maxvgrad.tutor.entity.ExaminationForm;
 import ru.maxvgrad.tutor.form.EgeMathProfForm;
 
 import java.time.Instant;
 
 @UtilityClass
-public class TestObject {
+public class TestEntity {
 
     private static final String EMPTY_JSON = "{}";
 
@@ -60,11 +61,15 @@ public class TestObject {
                               .build();
     }
 
-    public <T> SubmissionFormDto<T> buildSubmissionForm(T form) {
-        return SubmissionFormDto.<T>builder()
-                .id(1L)
-                .form(form)
-                .examinationFormId(1L)
-                .build();
+    public AppUser buildAppUser() {
+        return AppUser.builder()
+                      .id(42L)
+                      .status(AppUserStatus.ACTIVE)
+                      .phone("+79528850909")
+                      .password("99")
+                      .fullName("Maksim Vinogradov")
+                      .login("maxvgrad")
+                      .email("max@gmail.com")
+                      .build();
     }
 }

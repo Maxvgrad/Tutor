@@ -1,11 +1,21 @@
 create table if not exists app_user
 (
-  id              bigserial primary key,
-  login           varchar(255) unique,
+  id bigserial primary key,
+  login
+  varchar
+(
+  255
+),
   password        varchar(255) not null,
-  email           varchar(255) not null,
+  email varchar
+(
+  255
+) not null unique,
   full_name       varchar(255) not null,
-  phone           varchar(255) not null,
+  phone varchar
+(
+  255
+),
   status          varchar(255) not null
 );
 
