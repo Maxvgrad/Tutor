@@ -25,6 +25,7 @@ public class RegistrationController {
 
     @GetMapping(value = "/user/registration")
     public String showRegistrationForm(WebRequest request, Model model) {
+        log.debug("#showRegistrationForm:");
         AppUserDto userDto = AppUserDto.builder().build();
         model.addAttribute("user", userDto);
         return "registration";

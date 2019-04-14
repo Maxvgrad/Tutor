@@ -1,4 +1,5 @@
 insert into user_role(name, description) values
-('STUDENT', 'Студент'),
-('TUTOR', 'Репетитор'),
-('ADMIN', 'Администратор');
+                                           ('ROLE_USER', 'Пользователь'),
+                                           ('ROLE_STUDENT', 'Студент'),
+                                           ('ROLE_TUTOR', 'Репетитор'),
+                                           ('ROLE_ADMIN', 'Администратор');
